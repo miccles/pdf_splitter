@@ -1,6 +1,7 @@
 import PyPDF2
 import tkinter as tk
 from tkinter import filedialog, simpledialog, messagebox
+from page_ranges import get_page_ranges
 
 def split_pdf(pdf_path, ranges):
     pdf_reader = PyPDF2.PdfReader(pdf_path)
@@ -9,7 +10,7 @@ def split_pdf(pdf_path, ranges):
         start, end = page_range
         for page_num in range(start - 1, end):
             pdf_writer.add_page(pdf_reader.pages[page_num])
-        output_path = 'C:\\Users\\micha\\Documents\\' + f'output_{i + 1}.pdf'
+        output_path = 'C:\\Users\\micha\\Documents\\' + f'split_pdf_{i + 1}.pdf'
         with open(output_path, 'wb') as output_pdf:
             pdf_writer.write(output_pdf)
 
@@ -26,3 +27,4 @@ def open_pdf(ranges_label, pages_label):
             messagebox.showinfo("PDF Split", f"PDFs saved to Documents")
         else:
             messagebox.showerror("Error", "Invalid page ranges")
+
