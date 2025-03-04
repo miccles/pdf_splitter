@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog, simpledialog, messagebox
-
+from pdf_reader import open_pdf
 
 # Function to create the GUI for the program
 def create_gui():
